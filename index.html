@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Oluwatosin</title>
+  <meta name="description" content="A birthday wishlist made with love for Oluwatosin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f0e8;
+      --panel: rgba(255, 251, 247, 0.72);
+      --panel-strong: rgba(255, 248, 241, 0.9);
+      --ink: #35231b;
+      --muted: #755c4a;
+      --line: rgba(110, 75, 52, 0.16);
+      --bronze: #9e6744;
+      --bronze-deep: #78492f;
+      --champagne: #e7cfae;
+      --shadow: 0 22px 80px rgba(85, 50, 31, 0.16);
+      --shadow-soft: 0 12px 40px rgba(87, 53, 34, 0.1);
+      --radius-xl: 32px;
+      --max-width: 1180px;
+    }
+
+    body[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #1f140f;
+      --panel: rgba(58, 37, 28, 0.72);
+      --panel-strong: rgba(70, 44, 32, 0.9);
+      --ink: #f7ecdf;
+      --muted: #d6bca6;
+      --line: rgba(240, 217, 190, 0.12);
+      --bronze: #dcaa7b;
+      --bronze-deep: #f1c79c;
+      --champagne: #6f4c37;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(231, 207, 174, 0.65), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(158, 103, 68, 0.18), transparent 22%),
+        linear-gradient(180deg, #f9f1e8 0%, var(--bg) 36%, #efe2d4 100%);
+      transition: background 260ms ease, color 260ms ease;
+    }
+
+    body[data-theme="dark"] {
+      background:
+        radial-gradient(circle at top left, rgba(220, 170, 123, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(231, 207, 174, 0.09), transparent 22%),
+        linear-gradient(180deg, #160f0c 0%, var(--bg) 36%, #2a1a14 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: radial-gradient(circle at center, black 28%, transparent 95%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 251, 247, 0.52);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body[data-theme="dark"] .brand {
+      background: rgba(40, 25, 18, 0.55);
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff6e8 0%, #f2d8ba 38%, #aa714f 100%);
+      box-shadow: inset 0 1px 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .toolbar-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .theme-toggle,
+    .button,
+    .icon-button {
+      appearance: none;
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, opacity 180ms ease, background 180ms ease;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 247, 0.56);
+      color: var(--ink);
+      padding: 10px 16px;
+      backdrop-filter: blur(18px);
+    }
+
+    body[data-theme="dark"] .theme-toggle {
+      background: rgba(40, 25, 18, 0.56);
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible,
+    .button:hover,
+    .button:focus-visible,
+    .icon-button:hover,
+    .icon-button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.9fr);
+      gap: 30px;
+      align-items: stretch;
+      margin-bottom: 32px;
+    }
+
+    .hero-copy,
+    .hero-photo,
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--panel);
+      backdrop-filter: blur(22px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy,
+    .panel {
+      padding: 32px;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -18% auto;
+      width: 260px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(231, 207, 174, 0.92), rgba(231, 207, 174, 0));
+      opacity: 0.55;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.28);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--champagne), var(--bronze));
+      box-shadow: 0 0 0 4px rgba(231, 207, 174, 0.18);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      line-height: 0.98;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(3.3rem, 8vw, 6.5rem);
+      letter-spacing: -0.04em;
+      max-width: 8ch;
+    }
+
+    .subtitle {
+      margin: 16px 0 18px;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .message {
+      margin: 0 0 28px;
+      max-width: 38rem;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      text-decoration: none;
+      border: 0;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button-primary {
+      color: #fffaf4;
+      background: linear-gradient(135deg, var(--bronze) 0%, var(--bronze-deep) 100%);
+    }
+
+    .hero-notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .note-card {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    body[data-theme="dark"] .note-card {
+      background: rgba(45, 28, 20, 0.44);
+    }
+
+    .note-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .note-value {
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .hero-photo {
+      min-height: 560px;
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(247, 235, 219, 0.74), rgba(229, 204, 180, 0.42)),
+        var(--panel-strong);
+    }
+
+    body[data-theme="dark"] .hero-photo {
+      background:
+        linear-gradient(180deg, rgba(71, 45, 33, 0.66), rgba(39, 26, 19, 0.5)),
+        var(--panel-strong);
+    }
+
+    .photo-frame {
+      position: relative;
+      height: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      background: #d8b396;
+    }
+
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(36, 22, 16, 0.06), transparent 24%, rgba(31, 19, 13, 0.28) 100%);
+      pointer-events: none;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      transform: scale(1.02);
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      color: #fff8ef;
+      background: linear-gradient(135deg, rgba(78, 48, 32, 0.78), rgba(32, 20, 14, 0.65));
+      backdrop-filter: blur(10px);
+    }
+
+    .caption-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .caption-copy {
+      margin-top: 2px;
+      font-size: 0.9rem;
+      color: rgba(255, 245, 232, 0.82);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 22px;
+    }
+
+    .panel-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.03em;
+    }
+
+    .panel-copy {
+      margin-top: 10px;
+      max-width: 34rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .status-pill {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.24);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .status-pill strong {
+      color: var(--ink);
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--ink);
+      background: rgba(255, 253, 250, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(116, 85, 64, 0.08);
+      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    body[data-theme="dark"] input,
+    body[data-theme="dark"] select,
+    body[data-theme="dark"] textarea {
+      background: rgba(34, 22, 16, 0.74);
+      box-shadow: inset 0 0 0 1px rgba(227, 203, 177, 0.06);
+    }
+
+    textarea {
+      min-height: 124px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus-visible,
+    a:focus-visible {
+      outline: none;
+      border-color: color-mix(in srgb, var(--bronze) 70%, white);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--champagne) 44%, transparent);
+    }
+
+    .helper-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .helper-text {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .feedback {
+      min-height: 1.4rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .feedback.is-success {
+      color: #6f5239;
+    }
+
+    .feedback.is-error {
+      color: #8b3f2b;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-width: min(360px, calc(100vw - 2rem));
+      max-width: 420px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #fff8ef;
+      background: linear-gradient(135deg, rgba(118, 73, 47, 0.96), rgba(74, 43, 29, 0.96));
+      box-shadow: 0 22px 60px rgba(42, 22, 14, 0.28);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(18px) scale(0.96);
+      transition: opacity 220ms ease, transform 260ms ease;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .toast-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      color: #5b3522;
+      font-size: 1.1rem;
+      background: linear-gradient(180deg, #f4dec1, #e9c79f);
+      box-shadow: inset 0 1px 8px rgba(255, 255, 255, 0.38);
+    }
+
+    .toast-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .toast-copy {
+      margin-top: 3px;
+      font-size: 0.95rem;
+      color: rgba(255, 245, 232, 0.84);
+    }
+
+    .admin-layout {
+      display: none;
+      gap: 24px;
+    }
+
+    body.is-admin .admin-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    }
+
+    .wishlist-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .empty-state {
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px dashed rgba(158, 103, 68, 0.34);
+      background: rgba(255, 255, 255, 0.18);
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .wish-card {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 249, 0.52);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body[data-theme="dark"] .wish-card {
+      background: rgba(43, 28, 20, 0.6);
+    }
+
+    .wish-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .wish-name {
+      margin-bottom: 8px;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .wish-link {
+      color: var(--bronze-deep);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .wish-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-chip,
+    .priority-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.26);
+    }
+
+    body[data-theme="dark"] .meta-chip,
+    body[data-theme="dark"] .priority-chip {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .priority-high {
+      color: #fff8ef;
+      background: linear-gradient(135deg, #8a4e30, #6f3721);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .priority-medium {
+      color: #593723;
+      background: linear-gradient(135deg, #ebd2ad, #dcb98c);
+      border-color: transparent;
+    }
+
+    body[data-theme="dark"] .priority-medium {
+      color: #f8ebdc;
+      background: linear-gradient(135deg, #7f583d, #684630);
+    }
+
+    .priority-low {
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .wish-note {
+      margin: 0;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .wish-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .wish-date {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .icon-button {
+      min-height: 44px;
+      padding: 0 15px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.34);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body[data-theme="dark"] .icon-button {
+      background: rgba(46, 29, 21, 0.54);
+    }
+
+    .admin-json {
+      width: 100%;
+      min-height: 360px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      padding: 18px;
+      font: 0.92rem/1.6 "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+      color: var(--ink);
+      background: rgba(255, 252, 248, 0.62);
+      box-shadow: inset 0 0 0 1px rgba(116, 85, 64, 0.06);
+    }
+
+    body[data-theme="dark"] .admin-json {
+      background: rgba(34, 22, 16, 0.82);
+      box-shadow: inset 0 0 0 1px rgba(227, 203, 177, 0.06);
+    }
+
+    .admin-only {
+      display: none;
+    }
+
+    body.is-admin .admin-only {
+      display: block;
+    }
+
+    body.is-admin .public-only {
+      display: none;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tip-card {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.26);
+      box-shadow: var(--shadow-soft);
+    }
+
+    body[data-theme="dark"] .tip-card {
+      background: rgba(43, 28, 20, 0.5);
+    }
+
+    .tip-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.7rem;
+    }
+
+    .tip-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      padding: 24px 4px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .section-grid,
+      .admin-layout,
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo {
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(100% - 1rem, var(--max-width));
+        padding-top: 12px;
+      }
+
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-copy,
+      .hero-photo,
+      .panel {
+        border-radius: 28px;
+      }
+
+      .hero-copy,
+      .panel {
+        padding: 22px;
+      }
+
+      .hero-notes,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-header,
+      .wish-top,
+      .wish-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .status-pill {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero-photo {
+        min-height: 420px;
+      }
+
+      h1 {
+        max-width: 10ch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar" aria-label="Site header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <div class="brand-title">For Oluwatosin</div>
+          <div class="toolbar-meta">A birthday wishlist made with love</div>
+        </div>
+      </div>
+      <button class="theme-toggle" type="button" id="themeToggle" aria-label="Toggle color theme">Switch theme</button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <article class="hero-copy">
+          <div class="eyebrow" id="modeEyebrow">Birthday in 2 days</div>
+          <h1 id="hero-title">For Oluwatosin</h1>
+          <p class="subtitle" id="heroSubtitle">A birthday wishlist made with love</p>
+          <p class="message">You are amazing my wife and every day with you is a blessing</p>
+          <div class="hero-actions public-only">
+            <a class="button button-primary" href="#wishlist-form">Add a wishlist item</a>
+          </div>
+          <div class="hero-actions admin-only">
+            <a class="button button-primary" href="#admin-list">View saved wishes</a>
+          </div>
+          <div class="hero-notes" aria-label="Highlights">
+            <div class="note-card">
+              <span class="note-label">Mood</span>
+              <span class="note-value">Romantic, playful, softly luxurious</span>
+            </div>
+            <div class="note-card public-only">
+              <span class="note-label">Keepsakes</span>
+              <span class="note-value">Add gift ideas, links, notes, and little hints</span>
+            </div>
+            <div class="note-card public-only">
+              <span class="note-label">A little ritual</span>
+              <span class="note-value">A soft place to collect the things that would make her smile</span>
+            </div>
+            <div class="note-card admin-only">
+              <span class="note-label">Private view</span>
+              <span class="note-value">This page quietly shows everything saved in <code>wishlist.json</code></span>
+            </div>
+            <div class="note-card admin-only">
+              <span class="note-label">Server-backed</span>
+              <span class="note-value">New submissions go straight to the Node server and persist on disk</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-photo" aria-label="Featured photo">
+          <div class="photo-frame">
+            <img src="assets/oluwatosin-hero.jpeg" alt="Oluwatosin seated at a dinner table in a warm, elegant setting.">
+            <div class="photo-caption">
+              <div class="caption-title">A small love letter in website form</div>
+              <div class="caption-copy">Warm tones, thoughtful details, and a place for every wish.</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-grid public-only" aria-label="Wishlist form">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title" id="wishlist-form">Add to the wishlist</h2>
+              <p class="panel-copy">A simple way for Oluwatosin to save beautiful little ideas for her birthday. Once this is running through the Node server, each wish is saved into a real JSON file.</p>
+            </div>
+            <div class="status-pill"><span>Status</span> <strong id="saveStatus">Ready</strong></div>
+          </div>
+
+          <form id="wishlistForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="itemName">Item name</label>
+                <input id="itemName" name="itemName" type="text" placeholder="Silk robe, perfume, dinner reservation..." required>
+              </div>
+              <div class="field">
+                <label for="itemLink">Link</label>
+                <input id="itemLink" name="itemLink" type="url" placeholder="https://...">
+              </div>
+              <div class="field">
+                <label for="priceIdea">Price idea</label>
+                <input id="priceIdea" name="priceIdea" type="text" placeholder="$120 or around N150,000">
+              </div>
+              <div class="field">
+                <label for="itemDetails">Size / color / type</label>
+                <input id="itemDetails" name="itemDetails" type="text" placeholder="Gold, medium, floral, weekend getaway...">
+              </div>
+              <div class="field">
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                  <option value="High">High</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="specialNote">Special note</label>
+                <textarea id="specialNote" name="specialNote" placeholder="A hint, a preferred version, or why this one would feel extra special..."></textarea>
+              </div>
+            </div>
+            <div class="helper-row">
+              <div class="helper-text">Thoughtful, simple, and saved gently behind the scenes.</div>
+              <button class="button button-primary" type="submit">Save this wish</button>
+            </div>
+            <div class="feedback" id="formFeedback" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Saved wishes</h2>
+              <p class="panel-copy">A graceful running list of everything you have added so far.</p>
+            </div>
+            <div class="status-pill"><span>Wishlist items</span> <strong id="publicItemCount">0</strong></div>
+          </div>
+          <div class="wishlist-list" id="publicWishlistList" aria-live="polite"></div>
+        </article>
+      </section>
+
+      <section class="admin-layout admin-only" aria-label="Admin view">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title" id="admin-list">Saved wishes</h2>
+              <p class="panel-copy">This private view reads from the server-backed JSON file and lets you quietly keep track of everything that has been added.</p>
+            </div>
+            <div class="status-pill"><span>Wishlist items</span> <strong id="itemCount">0</strong></div>
+          </div>
+          <div class="feedback" id="adminFeedback" aria-live="polite"></div>
+          <div class="wishlist-list" id="wishlistList" aria-live="polite"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">Raw file view</h2>
+              <p class="panel-copy">A subtle read-only view of the actual JSON currently on disk. If you ever want the raw data, it is also available directly at <code>/data/wishlist.json</code>.</p>
+            </div>
+          </div>
+          <textarea class="admin-json" id="jsonPreview" readonly></textarea>
+        </article>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">Crafted with warmth, intention, and a little birthday sparkle.</footer>
+  </div>
+
+  <div class="toast" id="saveToast" aria-live="polite" aria-atomic="true">
+    <div class="toast-mark" aria-hidden="true">♡</div>
+    <div>
+      <div class="toast-title">Wish saved</div>
+      <div class="toast-copy" id="saveToastCopy">Added beautifully.</div>
+    </div>
+  </div>
+
+  <template id="wishCardTemplate">
+    <article class="wish-card">
+      <div class="wish-top">
+        <div>
+          <h3 class="wish-name"></h3>
+          <a class="wish-link" target="_blank" rel="noreferrer noopener"></a>
+        </div>
+        <div class="priority-chip"></div>
+      </div>
+      <div class="wish-meta"></div>
+      <p class="wish-note"></p>
+      <div class="wish-footer">
+        <span class="wish-date"></span>
+        <button class="icon-button" type="button">Remove</button>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    (function () {
+      var themeToggle = document.getElementById("themeToggle");
+      var wishlistForm = document.getElementById("wishlistForm");
+      var saveStatus = document.getElementById("saveStatus");
+      var formFeedback = document.getElementById("formFeedback");
+      var adminFeedback = document.getElementById("adminFeedback");
+      var wishlistList = document.getElementById("wishlistList");
+      var itemCount = document.getElementById("itemCount");
+      var publicWishlistList = document.getElementById("publicWishlistList");
+      var publicItemCount = document.getElementById("publicItemCount");
+      var jsonPreview = document.getElementById("jsonPreview");
+      var wishCardTemplate = document.getElementById("wishCardTemplate");
+      var heroSubtitle = document.getElementById("heroSubtitle");
+      var modeEyebrow = document.getElementById("modeEyebrow");
+      var saveToast = document.getElementById("saveToast");
+      var saveToastCopy = document.getElementById("saveToastCopy");
+      var themeKey = "for-oluwatosin-theme";
+      var isAdmin = window.location.pathname.replace(/\/+$/, "") === "/admin";
+      var toastTimer = null;
+
+      if (isAdmin) {
+        document.body.classList.add("is-admin");
+        document.title = "For Oluwatosin Admin";
+        heroSubtitle.textContent = "A quiet private view of the wishlist";
+        modeEyebrow.textContent = "Private list view";
+      }
+
+      function loadTheme() {
+        try {
+          return window.localStorage.getItem(themeKey) || "dark";
+        } catch (error) {
+          return "dark";
+        }
+      }
+
+      function saveTheme(theme) {
+        try {
+          window.localStorage.setItem(themeKey, theme);
+        } catch (error) {
+          return;
+        }
+      }
+
+      function applyTheme(theme) {
+        document.body.dataset.theme = theme;
+        themeToggle.textContent = theme === "dark" ? "Use light mode" : "Use dark mode";
+      }
+
+      function formatDate(value) {
+        var date = new Date(value);
+        return new Intl.DateTimeFormat("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit"
+        }).format(date);
+      }
+
+      function priorityClass(priority) {
+        var normalized = String(priority || "").toLowerCase();
+        if (normalized === "high") return "priority-high";
+        if (normalized === "low") return "priority-low";
+        return "priority-medium";
+      }
+
+      function buildMetaChip(label, value) {
+        var chip = document.createElement("span");
+        chip.className = "meta-chip";
+        chip.textContent = label + ": " + value;
+        return chip;
+      }
+
+      async function requestJson(url, options) {
+        var response = await fetch(url, options);
+        var payload = await response.json().catch(function () {
+          return {};
+        });
+
+        if (!response.ok) {
+          throw new Error(payload && payload.error ? payload.error : "Request failed.");
+        }
+
+        return payload;
+      }
+
+      function setFeedback(target, message, state) {
+        if (!target) {
+          return;
+        }
+
+        target.textContent = message || "";
+        target.classList.remove("is-success", "is-error");
+
+        if (state) {
+          target.classList.add(state === "error" ? "is-error" : "is-success");
+        }
+      }
+
+      function showToast(message) {
+        if (!saveToast || !saveToastCopy) {
+          return;
+        }
+
+        saveToastCopy.textContent = message;
+        saveToast.classList.add("is-visible");
+
+        if (toastTimer) {
+          window.clearTimeout(toastTimer);
+        }
+
+        toastTimer = window.setTimeout(function () {
+          saveToast.classList.remove("is-visible");
+        }, 2400);
+      }
+
+      function renderWishlistCards(target, items, options) {
+        if (!target) {
+          return;
+        }
+
+        var sorted = items.slice().sort(function (a, b) {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+
+        target.innerHTML = "";
+
+        if (!sorted.length) {
+          target.innerHTML = "<div class=\"empty-state\">No wishlist items yet. The first beautiful idea added will appear here.</div>";
+          return;
+        }
+
+        sorted.forEach(function (item) {
+          var fragment = wishCardTemplate.content.cloneNode(true);
+          var name = fragment.querySelector(".wish-name");
+          var link = fragment.querySelector(".wish-link");
+          var priority = fragment.querySelector(".priority-chip");
+          var meta = fragment.querySelector(".wish-meta");
+          var note = fragment.querySelector(".wish-note");
+          var date = fragment.querySelector(".wish-date");
+          var removeButton = fragment.querySelector(".icon-button");
+
+          name.textContent = item.itemName;
+
+          if (item.itemLink) {
+            link.href = item.itemLink;
+            link.textContent = "Open item link";
+          } else {
+            link.remove();
+          }
+
+          priority.textContent = item.priority + " priority";
+          priority.classList.add(priorityClass(item.priority));
+
+          if (item.priceIdea) meta.appendChild(buildMetaChip("Price", item.priceIdea));
+          if (item.itemDetails) meta.appendChild(buildMetaChip("Details", item.itemDetails));
+
+          note.textContent = item.specialNote || "No extra note yet.";
+          date.textContent = "Added " + formatDate(item.createdAt);
+
+          if (options && options.allowRemove) {
+            removeButton.setAttribute("aria-label", "Remove " + item.itemName);
+            removeButton.addEventListener("click", async function () {
+              try {
+                var payload = await requestJson("/api/wishlist/" + encodeURIComponent(item.id), {
+                  method: "DELETE"
+                });
+                renderAllWishlistViews(payload.items || []);
+                setFeedback(adminFeedback, "Removed “" + item.itemName + "”.", "success");
+              } catch (error) {
+                setFeedback(adminFeedback, error.message, "error");
+              }
+            });
+          } else {
+            removeButton.remove();
+          }
+
+          target.appendChild(fragment);
+        });
+      }
+
+      function renderAllWishlistViews(items) {
+        if (itemCount) {
+          itemCount.textContent = String(items.length);
+        }
+
+        if (publicItemCount) {
+          publicItemCount.textContent = String(items.length);
+        }
+
+        if (jsonPreview) {
+          jsonPreview.value = JSON.stringify({ title: "For Oluwatosin", items: items }, null, 2);
+        }
+
+        renderWishlistCards(wishlistList, items, { allowRemove: true });
+        renderWishlistCards(publicWishlistList, items, { allowRemove: false });
+      }
+
+      async function loadWishlist() {
+        try {
+          var payload = await requestJson("/api/wishlist");
+          renderAllWishlistViews(payload.items || []);
+        } catch (error) {
+          setFeedback(adminFeedback, error.message, "error");
+          setFeedback(formFeedback, error.message, "error");
+        }
+      }
+
+      if (wishlistForm) {
+        wishlistForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          var formData = new FormData(wishlistForm);
+          var itemName = String(formData.get("itemName") || "").trim();
+
+          if (!itemName) {
+            document.getElementById("itemName").focus();
+            return;
+          }
+
+          saveStatus.textContent = "Saving...";
+          setFeedback(formFeedback, "", "");
+
+          try {
+            await requestJson("/api/wishlist", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                itemName: itemName,
+                itemLink: String(formData.get("itemLink") || "").trim(),
+                priceIdea: String(formData.get("priceIdea") || "").trim(),
+                itemDetails: String(formData.get("itemDetails") || "").trim(),
+                priority: String(formData.get("priority") || "Medium"),
+                specialNote: String(formData.get("specialNote") || "").trim()
+              })
+            });
+
+            wishlistForm.reset();
+            document.getElementById("priority").value = "Medium";
+            saveStatus.textContent = "Saved";
+            setFeedback(formFeedback, "Wish saved beautifully.", "success");
+            showToast("Your wishlist moment has been saved.");
+            loadWishlist();
+          } catch (error) {
+            saveStatus.textContent = "Error";
+            setFeedback(formFeedback, error.message, "error");
+          }
+        });
+      }
+
+      themeToggle.addEventListener("click", function () {
+        var currentTheme = document.body.dataset.theme === "dark" ? "dark" : "light";
+        var nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        saveTheme(nextTheme);
+      });
+
+      applyTheme(loadTheme());
+
+      loadWishlist();
+    }());
+  </script>
+</body>
+</html>
