@@ -683,6 +683,13 @@
       gap: 12px;
     }
 
+    .wish-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
     .wish-date {
       color: var(--muted);
       font-size: 0.9rem;
@@ -764,6 +771,47 @@
       text-align: center;
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(25, 15, 11, 0.46);
+      backdrop-filter: blur(12px);
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(760px, 100%);
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      padding: 28px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .modal-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     @media (max-width: 1080px) {
@@ -942,7 +990,7 @@
           <div class="panel-header">
             <div>
               <h2 class="panel-title">Saved wishes</h2>
-              <p class="panel-copy">A wonderful graceful running list of everything you have added so far.</p>
+              <p class="panel-copy">A graceful running list of everything added so far, with the freedom to update or remove a wish whenever needed.</p>
             </div>
             <div class="status-pill"><span>Wishlist items</span> <strong id="publicItemCount">0</strong></div>
           </div>
@@ -979,6 +1027,57 @@
     <footer class="site-footer">Crafted with warmth, intention, and a little birthday sparkle.</footer>
   </div>
 
+  <div class="modal" id="editModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Edit wish</h2>
+          <p class="panel-copy">Make a quiet update to a saved wishlist item.</p>
+        </div>
+      </div>
+      <form id="editWishlistForm">
+        <input id="editItemId" name="id" type="hidden">
+        <div class="form-grid">
+          <div class="field">
+            <label for="editItemName">Item name</label>
+            <input id="editItemName" name="itemName" type="text" required>
+          </div>
+          <div class="field">
+            <label for="editItemLink">Link</label>
+            <input id="editItemLink" name="itemLink" type="url">
+          </div>
+          <div class="field">
+            <label for="editPriceIdea">Price idea</label>
+            <input id="editPriceIdea" name="priceIdea" type="text">
+          </div>
+          <div class="field">
+            <label for="editItemDetails">Size / color / type</label>
+            <input id="editItemDetails" name="itemDetails" type="text">
+          </div>
+          <div class="field">
+            <label for="editPriority">Priority</label>
+            <select id="editPriority" name="priority">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="editSpecialNote">Special note</label>
+            <textarea id="editSpecialNote" name="specialNote"></textarea>
+          </div>
+        </div>
+        <div class="feedback" id="editFeedback" aria-live="polite"></div>
+        <div class="modal-actions">
+          <button class="icon-button" id="closeEditModalButton" type="button">Cancel</button>
+          <div class="modal-right">
+            <button class="icon-button" id="saveEditButton" type="submit">Save changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="toast" id="saveToast" aria-live="polite" aria-atomic="true">
     <div class="toast-mark" aria-hidden="true">♡</div>
     <div>
@@ -1000,7 +1099,10 @@
       <p class="wish-note"></p>
       <div class="wish-footer">
         <span class="wish-date"></span>
-        <button class="icon-button" type="button">Remove</button>
+        <div class="wish-actions">
+          <button class="icon-button" type="button" data-action="edit">Edit</button>
+          <button class="icon-button" type="button" data-action="remove">Remove</button>
+        </div>
       </div>
     </article>
   </template>
@@ -1020,6 +1122,10 @@
       var wishCardTemplate = document.getElementById("wishCardTemplate");
       var heroSubtitle = document.getElementById("heroSubtitle");
       var modeEyebrow = document.getElementById("modeEyebrow");
+      var editModal = document.getElementById("editModal");
+      var editWishlistForm = document.getElementById("editWishlistForm");
+      var closeEditModalButton = document.getElementById("closeEditModalButton");
+      var editFeedback = document.getElementById("editFeedback");
       var saveToast = document.getElementById("saveToast");
       var saveToastCopy = document.getElementById("saveToastCopy");
       var themeKey = "for-oluwatosin-theme";
@@ -1122,6 +1228,32 @@
         }, 2400);
       }
 
+      function openEditModal(item) {
+        if (!editModal || !editWishlistForm) {
+          return;
+        }
+
+        document.getElementById("editItemId").value = item.id;
+        document.getElementById("editItemName").value = item.itemName || "";
+        document.getElementById("editItemLink").value = item.itemLink || "";
+        document.getElementById("editPriceIdea").value = item.priceIdea || "";
+        document.getElementById("editItemDetails").value = item.itemDetails || "";
+        document.getElementById("editPriority").value = item.priority || "Medium";
+        document.getElementById("editSpecialNote").value = item.specialNote || "";
+        setFeedback(editFeedback, "", "");
+        editModal.classList.add("is-open");
+        editModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeEditModal() {
+        if (!editModal) {
+          return;
+        }
+
+        editModal.classList.remove("is-open");
+        editModal.setAttribute("aria-hidden", "true");
+      }
+
       function renderWishlistCards(target, items, options) {
         if (!target) {
           return;
@@ -1146,7 +1278,8 @@
           var meta = fragment.querySelector(".wish-meta");
           var note = fragment.querySelector(".wish-note");
           var date = fragment.querySelector(".wish-date");
-          var removeButton = fragment.querySelector(".icon-button");
+          var editButton = fragment.querySelector('[data-action="edit"]');
+          var removeButton = fragment.querySelector('[data-action="remove"]');
 
           name.textContent = item.itemName;
 
@@ -1166,7 +1299,11 @@
           note.textContent = item.specialNote || "No extra note yet.";
           date.textContent = "Added " + formatDate(item.createdAt);
 
-          if (options && options.allowRemove) {
+          if (options && options.allowActions) {
+            editButton.setAttribute("aria-label", "Edit " + item.itemName);
+            editButton.addEventListener("click", function () {
+              openEditModal(item);
+            });
             removeButton.setAttribute("aria-label", "Remove " + item.itemName);
             removeButton.addEventListener("click", async function () {
               try {
@@ -1174,12 +1311,14 @@
                   method: "DELETE"
                 });
                 renderAllWishlistViews(payload.items || []);
-                setFeedback(adminFeedback, "Removed “" + item.itemName + "”.", "success");
+                setFeedback(options.feedbackTarget, "Removed “" + item.itemName + "”.", "success");
+                showToast("Wish removed.");
               } catch (error) {
-                setFeedback(adminFeedback, error.message, "error");
+                setFeedback(options.feedbackTarget, error.message, "error");
               }
             });
           } else {
+            editButton.remove();
             removeButton.remove();
           }
 
@@ -1200,8 +1339,8 @@
           jsonPreview.value = JSON.stringify({ title: "For Oluwatosin", items: items }, null, 2);
         }
 
-        renderWishlistCards(wishlistList, items, { allowRemove: true });
-        renderWishlistCards(publicWishlistList, items, { allowRemove: false });
+        renderWishlistCards(wishlistList, items, { allowActions: true, feedbackTarget: adminFeedback });
+        renderWishlistCards(publicWishlistList, items, { allowActions: true, feedbackTarget: formFeedback });
       }
 
       async function loadWishlist() {
@@ -1254,6 +1393,58 @@
           } catch (error) {
             saveStatus.textContent = "Error";
             setFeedback(formFeedback, error.message, "error");
+          }
+        });
+      }
+
+      if (editWishlistForm) {
+        editWishlistForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          var formData = new FormData(editWishlistForm);
+          var id = String(formData.get("id") || "").trim();
+          var itemName = String(formData.get("itemName") || "").trim();
+
+          if (!id || !itemName) {
+            setFeedback(editFeedback, "Item name is required.", "error");
+            return;
+          }
+
+          try {
+            var payload = await requestJson("/api/wishlist/" + encodeURIComponent(id), {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                itemName: itemName,
+                itemLink: String(formData.get("itemLink") || "").trim(),
+                priceIdea: String(formData.get("priceIdea") || "").trim(),
+                itemDetails: String(formData.get("itemDetails") || "").trim(),
+                priority: String(formData.get("priority") || "Medium").trim(),
+                specialNote: String(formData.get("specialNote") || "").trim()
+              })
+            });
+
+            renderAllWishlistViews(payload.items || []);
+            setFeedback(adminFeedback, "Wish updated.", "success");
+            setFeedback(formFeedback, "Wish updated.", "success");
+            showToast("Wish updated beautifully.");
+            closeEditModal();
+          } catch (error) {
+            setFeedback(editFeedback, error.message, "error");
+          }
+        });
+      }
+
+      if (closeEditModalButton) {
+        closeEditModalButton.addEventListener("click", closeEditModal);
+      }
+
+      if (editModal) {
+        editModal.addEventListener("click", function (event) {
+          if (event.target === editModal) {
+            closeEditModal();
           }
         });
       }

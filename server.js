@@ -93,6 +93,19 @@ function normalizeItem(input) {
   };
 }
 
+function normalizeUpdatedItem(existingItem, input) {
+  return {
+    id: existingItem.id,
+    itemName: String(input.itemName || "").trim(),
+    itemLink: String(input.itemLink || "").trim(),
+    priceIdea: String(input.priceIdea || "").trim(),
+    itemDetails: String(input.itemDetails || "").trim(),
+    priority: String(input.priority || "Medium").trim() || "Medium",
+    specialNote: String(input.specialNote || "").trim(),
+    createdAt: existingItem.createdAt || new Date().toISOString()
+  };
+}
+
 async function handleRequest(req, res) {
   try {
     const url = new URL(req.url, "http://localhost");
@@ -146,6 +159,31 @@ async function handleRequest(req, res) {
       return;
     }
 
+    if (req.method === "PUT" && pathname.startsWith("/api/wishlist/")) {
+      const id = decodeURIComponent(pathname.slice("/api/wishlist/".length));
+      const raw = await readRequestBody(req);
+      const payload = raw ? JSON.parse(raw) : {};
+      const data = await readWishlist();
+      const index = data.items.findIndex((item) => item.id === id);
+
+      if (index === -1) {
+        sendJson(res, 404, { error: "Wishlist item not found." });
+        return;
+      }
+
+      const updatedItem = normalizeUpdatedItem(data.items[index], payload);
+
+      if (!updatedItem.itemName) {
+        sendJson(res, 400, { error: "Item name is required." });
+        return;
+      }
+
+      data.items[index] = updatedItem;
+      const saved = await writeWishlist(data);
+      sendJson(res, 200, saved);
+      return;
+    }
+
     sendText(res, 404, "Not found", "text/plain; charset=utf-8");
   } catch (error) {
     sendJson(res, 500, { error: error.message || "Server error." });
@@ -169,6 +207,7 @@ module.exports = {
   createServer,
   ensureWishlistFile,
   normalizeItem,
+  normalizeUpdatedItem,
   readWishlist,
   startServer,
   writeWishlist
